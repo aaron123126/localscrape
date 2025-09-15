@@ -18,7 +18,7 @@ jobs:
         env:
           # This secret is required for the Gemini review.
           # You can get a key from Google AI Studio.
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_API_KEY: AIzaSyCTQw6sNJKqiTk_0UojxDo9N3G9vAie-3E
 
   coderabbit-review:
     runs-on: ubuntu-latest
@@ -33,4 +33,4 @@ jobs:
         with:
           # This secret is required for the Coderabbit review.
           # You can get a key from your Coderabbit dashboard.
-          CODERABBIT_API_KEY: ${{ secrets.CODERABBIT_API_KEY }}
+          CODERABBIT_API_KEY: cr-745bc9983f5bf1b1d090bcda39348e497f9f62f09e7214614d4007e6a8
