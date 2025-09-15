@@ -72,6 +72,7 @@ The user has provided the following instructions and feedback:
 
 *   **Commit all changes:** All created files and changes must be committed to Git as development progresses.
 *   **User-centric README:** The `README.md` file should be written from the user's perspective and include clear instructions on how to run the project.
-*   **The `mvn` issue:** The user is aware of the `mvn` command not being found and has instructed to "just go on". The `README.md` has been updated to explain this issue to the user.
+*   **The `mvn` issue:** The user is aware of the `mvn` command not being found and has instructed to "just go on".
+* **Update this file on every change** So the AI after you exactly knows what the current project status is, what plans, and todos there are, which rules, maybe other user instructions? so the AI is always up to speed.
 
 Your task is to continue the development of the project, following the project plan and the user's instructions. The next step is to wait for the user to resolve the Maven issue. Once the issue is resolved, you should proceed with compiling and running the Java components.
