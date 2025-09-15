@@ -2,30 +2,69 @@
 
 A tool to create a local, browsable copy of a website.
 
-This project consists of three components:
+## Features
 
-1.  **Scraper (Java):** A tool that crawls a website to find all its URLs.
-2.  **Downloader (Java):** A tool that downloads the content of the URLs found by the scraper and compresses it.
-3.  **Server (Node.js):** A web server that serves the downloaded content, allowing you to browse the local copy of the website.
+*   **Web Scraper:** A resilient tool that crawls a website to discover all its URLs.
+*   **Content Downloader:** A parallel tool that downloads the content of the discovered URLs.
+*   **High Compression:** Downloaded content is compressed using Gzip to save space.
+*   **Local Web Server:** A Node.js server that allows you to browse the downloaded website locally in your browser.
+*   **Resilient:** The scraper and downloader can be stopped and restarted without losing progress.
 
-## Project Status
+## Prerequisites
 
-### What's Added & Working
+To run this project, you will need the following software installed on your system:
 
--   **Node.js Server:** The web server has been implemented using Node.js and Express. It is designed to serve content that has been downloaded and compressed by the other tools. It handles on-the-fly decompression of Gzipped content.
--   **Git Repository:** The entire project is under version control with Git. All progress has been committed.
+*   **Java:** Version 11 or higher.
+*   **Apache Maven:** To build the Java projects.
+*   **Node.js:** To run the web server.
 
-### What's Added (But Not Working)
+## How to Run
 
--   **Java Scraper:** The code for the scraper has been written. It's designed to be resilient, saving its state so it can be stopped and restarted.
--   **Java Downloader:** The code for the downloader has been written. It's designed to run in parallel to the scraper, download content, and compress it using Gzip.
+### 1. The Scraper (Java)
 
-### What's Not Working and How to Fix It
+The scraper is responsible for finding all the URLs of a website.
 
--   **Java Components Compilation:** The primary issue is that the Java-based scraper and downloader cannot be compiled or run.
--   **The Cause:** The `mvn` (Maven) command is not found by the system. This prevents the build process for the Java projects.
--   **The Solution:** To fix this, you need to:
-    1.  **Install Apache Maven:** If you don't have it, download and install it from the official website.
-    2.  **Configure the PATH variable:** Ensure that the `bin` directory of your Maven installation is included in your system's `PATH` environment variable. This will allow the `mvn` command to be executed from any directory.
+1.  **Build the project:**
+    ```bash
+    cd scraper
+    mvn package
+    ```
+2.  **Run the scraper:**
+    ```bash
+    java -jar target/scraper-1.0-SNAPSHOT-jar-with-dependencies.jar
+    ```
+3.  When you run it for the first time, it will ask you for a seed URL to start scraping.
 
-Once the `mvn` command is available, I can proceed with compiling and running the scraper and downloader to complete the project.
+### 2. The Downloader (Java)
+
+The downloader runs in parallel to the scraper and downloads the content of the URLs found by the scraper.
+
+1.  **Build the project:**
+    ```bash
+    cd downloader
+    mvn package
+    ```
+2.  **Run the downloader:**
+    ```bash
+    java -jar target/downloader-1.0-SNAPSHOT-jar-with-dependencies.jar
+    ```
+
+### 3. The Server (Node.js)
+
+The server serves the downloaded content.
+
+1.  **Install dependencies:**
+    ```bash
+    cd server
+    npm install
+    ```
+2.  **Run the server:**
+    ```bash
+    node server.js
+    ```
+3.  You can then open your browser and navigate to `http://localhost:3000` to browse the local copy of the website.
+
+## Current Project Status
+
+*   **Scraper & Downloader:** The code for the scraper and downloader has been written. However, there is a known issue where the `mvn` command is not found, which prevents them from being built and run. To resolve this, please ensure that Apache Maven is installed and that its `bin` directory is in your system's `PATH`.
+*   **Server:** The Node.js server has been fully implemented and is ready to be used. Once the scraper and downloader have run and there is content in the `content` directory, the server will be able to serve it.
